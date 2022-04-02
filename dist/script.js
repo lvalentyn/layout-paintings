@@ -931,12 +931,48 @@ module.exports = g;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
+/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
+
 
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
+  Object(_modules_burger__WEBPACK_IMPORTED_MODULE_1__["default"])('.burger-menu', '.burger');
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/burger.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/burger.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var burger = function burger(menuSelector, burgerSelector) {
+  var menuElem = document.querySelector(menuSelector),
+      burgerElem = document.querySelector(burgerSelector); // menuElem.style.display = 'none';
+
+  burgerElem.addEventListener('click', function () {
+    if (menuElem.style.display == "none" && window.screen.availWidth < 993) {
+      menuElem.style.display = 'block';
+      console.log('hii');
+    } else {
+      menuElem.style.display = 'none';
+      console.log('hii');
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (window.screen.availWidth > 992) {
+      menuElem.style.display = 'none';
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (burger);
 
 /***/ }),
 
