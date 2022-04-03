@@ -933,6 +933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
 /* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
 /* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
+/* harmony import */ var _modules_accordion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/accordion */ "./src/js/modules/accordion.js");
+
 
 
 
@@ -942,7 +944,55 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_2__["default"])();
   Object(_modules_burger__WEBPACK_IMPORTED_MODULE_1__["default"])('.burger-menu', '.burger');
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])();
+  Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_3__["default"])('.accordion-heading');
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/accordion.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/accordion.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var accordion = function accordion(triggerSelector) {
+  var btns = document.querySelectorAll(triggerSelector);
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      this.classList.toggle('active-style');
+      this.nextElementSibling.classList.toggle('active-content');
+
+      if (this.classList.contains('active-style')) {
+        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + 'px';
+      } else {
+        this.nextElementSibling.style.maxHeight = '0px';
+      }
+    });
+  }); // const btns = document.querySelectorAll(triggerSelector),
+  // 	blocks = document.querySelectorAll(itemsSelector);
+  // blocks.forEach(block => {
+  // 	block.classList.add('animated', 'fadeInDown');
+  // });
+  // btns.forEach(btn => {
+  // 	btn.addEventListener('click', function () {
+  // 		if (!this.classList.contains('active')) {
+  // 			btns.forEach(btn => {
+  // 				btn.classList.remove('active', 'active-style');
+  // 			});
+  // 			this.classList.add('active', 'active-style');
+  // 		}
+  // 	});
+  // });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (accordion);
 
 /***/ }),
 
@@ -1157,9 +1207,9 @@ var modals = function modals() {
     var scrollWidth = div.offsetWidth - div.clientWidth;
     div.remove();
     return scrollWidth;
-  }
+  } // showModalByTime('.popup-consultation', 5000);
 
-  showModalByTime('.popup-consultation', 5000);
+
   bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
   bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
 };
