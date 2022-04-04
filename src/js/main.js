@@ -10,6 +10,7 @@ import showMore from './modules/showMore';
 import calc from './modules/calc';
 import pictureSize from './modules/pictureSize';
 import scrolling from './modules/scrolling';
+import dragNdrop from './modules/dragNdrop';
 
 window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
@@ -27,4 +28,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	calc('#size', '#material', '#options', '.promocode', '.calc-price');
 	pictureSize('.sizes-block');
 	scrolling('.pageup');
+	dragNdrop();
 });
