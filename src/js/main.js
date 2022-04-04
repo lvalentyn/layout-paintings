@@ -8,6 +8,7 @@ import mask from './modules/mask';
 import checkTextInputs from './modules/checkTextInputs';
 import showMore from './modules/showMore';
 import calc from './modules/calc';
+import pictureSize from './modules/pictureSize';
 
 window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
@@ -23,4 +24,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	checkTextInputs('[name="message"]');
 	showMore('.button-styles', '#styles .row');
 	calc('#size', '#material', '#options', '.promocode', '.calc-price');
+	pictureSize('.sizes-block');
 });
