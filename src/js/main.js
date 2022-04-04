@@ -9,6 +9,7 @@ import checkTextInputs from './modules/checkTextInputs';
 import showMore from './modules/showMore';
 import calc from './modules/calc';
 import pictureSize from './modules/pictureSize';
+import scrolling from './modules/scrolling';
 
 window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
@@ -25,4 +26,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	showMore('.button-styles', '#styles .row');
 	calc('#size', '#material', '#options', '.promocode', '.calc-price');
 	pictureSize('.sizes-block');
+	scrolling('.pageup');
 });
