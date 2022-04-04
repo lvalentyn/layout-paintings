@@ -14,7 +14,6 @@ const accordion = (triggerSelector) => {
 		});
 	});
 
-
 	// const btns = document.querySelectorAll(triggerSelector),
 	// 	blocks = document.querySelectorAll(itemsSelector);
 

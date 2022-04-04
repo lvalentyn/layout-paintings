@@ -1,4 +1,5 @@
 const modals = () => {
+	let btnPressed = false;
 	function bindModal(triggerSelector, modalSelector, closeSelector, destroy = false) {
 
 		const trigger = document.querySelectorAll(triggerSelector),
@@ -14,12 +15,15 @@ const modals = () => {
 					e.preventDefault()
 				}
 
+				btnPressed = true;
+
 				if (destroy) {
 					item.remove();
 				}
 
 				windows.forEach(item => {
 					item.style.display = 'none';
+					item.classList.add('animated', 'fadeIn');
 				});
 
 				modal.style.display = 'block';
@@ -89,10 +93,23 @@ const modals = () => {
 		return scrollWidth;
 	}
 
+	// получаем высоту страницы и вконце страницы иммитируем клик по модалке
+	function openByScroll(selector) {
+		window.addEventListener('scroll', () => {
+			let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+
+			if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >= scrollHeight)) {
+				document.querySelector(selector).click();
+			}
+		});
+	}
+
 	// showModalByTime('.popup-consultation', 5000);
 
 	bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
 	bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
+	bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true);
+	openByScroll('.fixed-gift');
 };
 
 export default modals;
